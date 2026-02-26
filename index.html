@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Business Platform</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Business Platform</h1>
+    </header>
+    <main>
+        <div id="user-creation">
+            <h2>Create Username</h2>
+            <input type="text" id="username" placeholder="Enter username">
+            <button onclick="createUser()">Create</button>
+        </div>
+        <div id="user-dashboard" style="display:none">
+            <h2>User Dashboard</h2>
+            <h3>Hello, <span id="current-user"></span></h3>
+            <label for="product-select">Select a product:</label>
+            <select id="product-select">
+                <option value="knife fidget">Knife Fidget</option>
+                <option value="other fidgets">Other Fidgets</option>
+                <option value="custom">Custom</option>
+            </select>
+            <br>
+            <label for="quality-level">Quality Level:</label>
+            <select id="quality-level">
+                <option value="low">Low</option>
+                <option value="high">High</option>
+            </select>
+            <br>
+            <label for="support-toggle">Support:</label>
+            <input type="checkbox" id="support-toggle">
+            <button onclick="saveSelection()">Save Selection</button>
+        </div>
+        <div id="admin-dashboard" style="display:none">
+            <h2>Admin Dashboard</h2>
+            <h3>Admin Actions</h3>
+            <p>Manage users: <span id="user-list"></span></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* CSS File (styles.css) */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    margin: 20px auto;
+    max-width: 600px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* JavaScript File (script.js) */
+function createUser() {
+    const username = document.getElementById('username').value;
+    if (username) {
+        localStorage.setItem('username', username);
+        document.getElementById('current-user').textContent = username;
+        document.getElementById('user-creation').style.display = 'none';
+        document.getElementById('user-dashboard').style.display = 'block';
+        if (username === 'mil' || username === 'shey') {
+            document.getElementById('admin-dashboard').style.display = 'block';
+        }
+    }
+}
+
+function saveSelection() {
+    const product = document.getElementById('product-select').value;
+    const quality = document.getElementById('quality-level').value;
+    const support = document.getElementById('support-toggle').checked ? 'On' : 'Off';
+    localStorage.setItem('product', product);
+    localStorage.setItem('quality', quality);
+    localStorage.setItem('support', support);
+}
