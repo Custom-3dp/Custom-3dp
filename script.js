@@ -1,50 +1,62 @@
-// Upload Handling
-document.getElementById("uploadForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const file = document.getElementById("fileInput").files[0];
-    const message = document.getElementById("uploadMessage");
+// Slider Controls
+const slider = document.getElementById("slider");
 
-    if (file) {
-        message.textContent = "File uploaded successfully! We will review it and send a quote.";
-    } else {
-        message.textContent = "Please select a valid 3D file.";
-    }
-});
+if (slider) {
+    document.querySelector(".arrow.left").addEventListener("click", () => {
+        slider.scrollBy({ left: -300, behavior: "smooth" });
+    });
 
-// Register User (Stored in localStorage for demo)
-document.getElementById("registerForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    document.querySelector(".arrow.right").addEventListener("click", () => {
+        slider.scrollBy({ left: 300, behavior: "smooth" });
+    });
+}
 
-    const phone = document.getElementById("phone").value;
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+// Upload
+const uploadForm = document.getElementById("uploadForm");
+if (uploadForm) {
+    uploadForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        document.getElementById("uploadMessage").textContent =
+            "File uploaded successfully. We'll review and send pricing.";
+    });
+}
 
-    const user = {
-        phone: phone,
-        username: username,
-        password: password
-    };
+// Register
+const registerForm = document.getElementById("registerForm");
+if (registerForm) {
+    registerForm.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-    localStorage.setItem("custom3dpUser", JSON.stringify(user));
+        const user = {
+            phone: document.getElementById("phone").value,
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+        };
 
-    alert("Account created successfully!");
-    this.reset();
-});
+        localStorage.setItem("custom3dpUser", JSON.stringify(user));
+        alert("Account created successfully!");
+        this.reset();
+    });
+}
 
 // Login
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+    loginForm.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-    const loginUsername = document.getElementById("loginUsername").value;
-    const loginPassword = document.getElementById("loginPassword").value;
-    const storedUser = JSON.parse(localStorage.getItem("custom3dpUser"));
-    const message = document.getElementById("loginMessage");
+        const storedUser = JSON.parse(localStorage.getItem("custom3dpUser"));
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
 
-    if (storedUser &&
-        loginUsername === storedUser.username &&
-        loginPassword === storedUser.password) {
-        message.textContent = "Login successful!";
-    } else {
-        message.textContent = "Invalid username or password.";
-    }
-});
+        if (storedUser &&
+            username === storedUser.username &&
+            password === storedUser.password) {
+            document.getElementById("loginMessage").textContent =
+                "Login successful!";
+        } else {
+            document.getElementById("loginMessage").textContent =
+                "Invalid credentials.";
+        }
+    });
+}
