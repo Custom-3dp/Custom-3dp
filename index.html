@@ -11,39 +11,51 @@
     <h1>Custom3dp</h1>
     <nav>
         <a href="#catalogue">Catalogue</a>
-        <a href="#upload">Upload Model</a>
-        <a href="#login">Login</a>
+        <a href="#upload">Upload</a>
+        <a href="login.html" class="login-btn">Login</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h2>Professional 3D Printing, On Demand</h2>
-    <p>Choose from our catalogue or upload your own model.</p>
+    <h2>Precision 3D Printing. Zero Compromise.</h2>
+    <p>Browse ready-made designs or upload your own files.</p>
 </section>
 
 <section id="catalogue">
-    <h2>Model Catalogue</h2>
-    <div class="catalogue-grid">
-        <div class="card">
-            <h3>Phone Stand</h3>
-            <p>$12.99</p>
-            <button>Add to Cart</button>
+    <h2>Featured Models</h2>
+
+    <div class="slider-wrapper">
+        <button class="arrow left">&#10094;</button>
+
+        <div class="catalogue-slider" id="slider">
+            <div class="card">
+                <h3>Phone Stand</h3>
+                <p>$12.99</p>
+                <button>Order</button>
+            </div>
+            <div class="card">
+                <h3>Desk Organizer</h3>
+                <p>$18.50</p>
+                <button>Order</button>
+            </div>
+            <div class="card">
+                <h3>Mini Planter</h3>
+                <p>$9.99</p>
+                <button>Order</button>
+            </div>
+            <div class="card">
+                <h3>Custom Keychain</h3>
+                <p>$6.00</p>
+                <button>Order</button>
+            </div>
+            <div class="card">
+                <h3>Headphone Stand</h3>
+                <p>$22.00</p>
+                <button>Order</button>
+            </div>
         </div>
-        <div class="card">
-            <h3>Desk Organizer</h3>
-            <p>$18.50</p>
-            <button>Add to Cart</button>
-        </div>
-        <div class="card">
-            <h3>Mini Planter</h3>
-            <p>$9.99</p>
-            <button>Add to Cart</button>
-        </div>
-        <div class="card">
-            <h3>Custom Keychain</h3>
-            <p>$6.00</p>
-            <button>Add to Cart</button>
-        </div>
+
+        <button class="arrow right">&#10095;</button>
     </div>
 </section>
 
@@ -54,27 +66,6 @@
         <button type="submit">Submit for Quote</button>
     </form>
     <p id="uploadMessage"></p>
-</section>
-
-<section id="login">
-    <h2>Login / Register</h2>
-
-    <form id="registerForm">
-        <h3>Create Account</h3>
-        <input type="text" id="phone" placeholder="Phone Number" required>
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Register</button>
-    </form>
-
-    <form id="loginForm">
-        <h3>Login</h3>
-        <input type="text" id="loginUsername" placeholder="Username" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-
-    <p id="loginMessage"></p>
 </section>
 
 <footer>
